@@ -5,6 +5,7 @@ import { timer } from 'rxjs/index';
 import {switchMap} from 'rxjs/internal/operators';
 import {MoviesItemDetailModel} from '../models/movies.detail.model';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {DetailModalComponent} from '../detail-modal/detail-modal.component';
 
 const REFRESH_INTERVAL = 100000;
 const API_URL = 'http://webjetapitest.azurewebsites.net/api/cinemaworld/';
@@ -49,13 +50,13 @@ export class MovieListComponent implements OnInit {
 
 
   openDialog(detail: MoviesItemDetailModel): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(DetailModalComponent, {
       width: '250px',
-      data: detail.ID
+      data: {detail: new MoviesItemDetailModel(detail)},
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(data => {
+      console.log('The dialog was closed' + data);
     });
   }
 

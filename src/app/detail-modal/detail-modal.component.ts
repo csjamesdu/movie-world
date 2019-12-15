@@ -1,15 +1,16 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
+import {Component, Inject, Optional} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MoviesItemDetailModel} from '../models/movies.detail.model';
 
 @Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
+  selector: 'app-detail-modal',
+  templateUrl: 'detail-modal.component.html',
 })
-export class DialogOverviewExampleDialog {
+export class DetailModalComponent {
 
   constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Optional() public dialogRef: MatDialogRef<DetailModalComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: MoviesItemDetailModel) {}
 
   onNoClick(): void {
     this.dialogRef.close();
