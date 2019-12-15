@@ -1,0 +1,13 @@
+<div>
+  <ul *ngFor="let movie of allMovies.Movies">
+    <li> {{movie.Title}}</li>
+    <li> {{movie.Year}}</li>
+    <button data-toggle="modal" data-target="#detailModal" (click)="getDetailsById(movie.ID)">
+      Details
+    </button>
+  </ul>
+</div>
+
+<div id="detailModal" class="modal fade">
+  show detail
+</div>
