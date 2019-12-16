@@ -19,12 +19,22 @@ export class AppHttpClient extends HttpClient {
   }
 
   get(url: string): Observable<any> {
+    console.log('before: ' + url);
     if (url.indexOf('movie/') > 0) {
       const newURL = API_URL + 'detail';
+      console.log('after: ' + newURL);
       return this.getWithProcess(newURL);
     } else {
       return this.getWithProcess(url);
     }
+  }
+
+  getWithProcess(url: string): Observable<any> {
+    // console.log('before: ' + url);
+    return super.get(url).pipe(switchMap(source => {
+      // console.log('after: ' + url);
+      return of(source);
+    }));
   }
 
 
@@ -37,19 +47,13 @@ export class AppHttpClient extends HttpClient {
   //   }
   // }
 
-  postWithProcess(url: string, body: any | null, options: any): Observable<any> {
-    return super.post(url, body, options).pipe(switchMap(source => {
-      return of(source);
-    }));
-  }
+  // postWithProcess(url: string, body: any | null, options: any): Observable<any> {
+  //   return super.post(url, body, options).pipe(switchMap(source => {
+  //     return of(source);
+  //   }));
+  // }
 
-  getWithProcess(url: string): Observable<any> {
-    console.log('before:' + url);
-    return super.get(url).pipe(switchMap(source => {
-      console.log('after' + url);
-      return of(source);
-    }));
-  }
+
 
 
 
