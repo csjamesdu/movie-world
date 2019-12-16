@@ -30,9 +30,7 @@ export class AppHttpClient extends HttpClient {
   }
 
   getWithProcess(url: string): Observable<any> {
-    // console.log('before: ' + url);
     return super.get(url).pipe(switchMap(source => {
-      // console.log('after: ' + url);
       return of(source);
     }));
   }

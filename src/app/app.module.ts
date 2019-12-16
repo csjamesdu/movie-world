@@ -11,7 +11,7 @@ import {AppHttpClient} from './services/app-httpclient.service';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailModalComponent } from './detail-modal/detail-modal.component';
-import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatCardModule, MatDialogModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,7 @@ import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material';
     HttpClientModule,
     AppRoutingModule,
     MatDialogModule,
+    MatCardModule,
     environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {apiBase: 'api/cinemaworld/', dataEncapsulation: false }),
     BrowserAnimationsModule,
   ],

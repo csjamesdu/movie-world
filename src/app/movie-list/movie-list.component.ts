@@ -53,9 +53,15 @@ export class MovieListComponent implements OnInit {
   openDialog(detail: MoviesItemDetailModel): void {
 
     const dialogRef = this.dialog.open(DetailModalComponent, {
-      width: '250px',
+      width: '450px',
       height: '300px',
-      data: {Price: detail.Price},
+      data: { Price: detail.Price, Title: detail.Title, Year: detail.Year,
+              Rated: detail.Rated, Released: detail.Released, Runtime: detail.Runtime,
+              Genre: detail.Genre, Director: detail.Director, Writer: detail.Writer,
+              Actors: detail.Actors, Plot: detail.Plot, Language: detail.Language,
+              Country: detail.Country, Awards: detail.Awards, Poster: detail.Poster,
+              Metascore: detail.Metascore, Rating: detail.Rating, Votes: detail.Votes,
+              ID: detail.ID, Type: detail.Type},
     });
 
     dialogRef.afterClosed().subscribe(data => {

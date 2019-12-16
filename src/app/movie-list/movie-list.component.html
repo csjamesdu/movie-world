@@ -1,11 +1,20 @@
 <div>
   <ul *ngFor="let movie of allMovies.Movies">
-    <li> {{movie.Title}}</li>
-    <li> {{movie.Year}}</li>
-    <button mat-button (click)="getDetailsById(movie.ID)">
-      Details
-    </button>
+    <li>
+        <mat-card class="movie-wrapper">
+          <mat-card-header>
+            <mat-card-title>{{movie.Title}}</mat-card-title>
+            <mat-card-subtitle>{{movie.Year}}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="getDetailsById(movie.ID)">
+              Details
+            </button>
+          </mat-card-actions>
+        </mat-card>
+    </li>
+
   </ul>
 </div>
-
-<app-detail-modal></app-detail-modal>

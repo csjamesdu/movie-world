@@ -1,8 +1,16 @@
-<h2 mat-dialog-title>{{detail.Price}}</h2>
+<h2 mat-dialog-title>{{detail.Title}}</h2>
 
 <mat-dialog-content >
+  <ul>
+    <li>Year: {{detail.Year}}</li>
+    <li>Rated: {{detail.Rated}}</li>
+    <li>Runtime: {{detail.Runtime}}</li>
+    <li>Director: {{detail.Director}}</li>
+    <li>Best Price: {{detail.Price}}</li>
 
+  </ul>
 </mat-dialog-content>
-
+  <button mat-button (click)="onCloseClick()">Got It</button>
 <mat-dialog-actions>
+
 </mat-dialog-actions>
