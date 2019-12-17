@@ -41,9 +41,9 @@ export class MovieListComponent implements OnInit {
   }
 
   getDetailsById(id: string) {
-    console.log(id);
+
     this.httpClient.get(API_URL + 'movie/' + id).subscribe(response => {
-      // console.log(response);
+      console.log(response);
       this.singleDetail = new MoviesItemDetailModel(response);
       this.openDialog(this.singleDetail);
     });

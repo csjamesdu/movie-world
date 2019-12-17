@@ -14,7 +14,7 @@
             <!--<button mat-raised-button color="primary" (click)="getDetailsById(movie.ID)">-->
               <!--Details-->
             <!--</button>-->
-            <button class="detail-button" mat-raised-button color="primary" (click)="getDetailsById(movie.ID)">
+            <button class="detail-button" mat-raised-button color="primary" [routerLink]="['/movie', movie.ID]">
               Details
             </button>
           </mat-card-actions>
