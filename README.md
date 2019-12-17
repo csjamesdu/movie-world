@@ -14,11 +14,10 @@ Alternatively, Run `npm install` and `ng serve --open`
 
 The app will automatically reload if you change any of the source files.
 
-## Build
+## Development Note
 
-Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-Development Note:
 1.The movie ID prefix should be removed at the backend to make it Identical;
+
 2.The poster uri should use https instead; 
+
 3.Still two posters are not available;
