@@ -7,7 +7,6 @@ import {MoviesItemDetailModel} from '../models/movies.detail.model';
 import {MatDialog} from '@angular/material/dialog';
 import {DetailModalComponent} from '../detail-modal/detail-modal.component';
 
-const REFRESH_INTERVAL = 100000;
 const API_URL = 'http://webjetapitest.azurewebsites.net/api/cinemaworld/';
 
 @Component({
@@ -20,14 +19,11 @@ export class MovieListComponent implements OnInit {
   allMovies: MoviesResponse = new MoviesResponse();
   singleDetail: MoviesItemDetailModel = new MoviesItemDetailModel();
 
-  constructor(private httpClient: AppHttpClient, public dialog: MatDialog) { }
+  constructor(private httpClient: AppHttpClient) { }
 
   ngOnInit() {
 
-    const timer$ = timer(0, REFRESH_INTERVAL);
-    timer$.pipe(
-      switchMap(() => this.requestMovies())
-    ).subscribe(response => {
+    this.requestMovies().subscribe(response => {
         this.allMovies = new MoviesResponse(response);
         this.allMovies.Movies.sort((a, b) =>
           (a.Year > b.Year) ? -1 : 1
@@ -45,28 +41,11 @@ export class MovieListComponent implements OnInit {
     this.httpClient.get(API_URL + 'movie/' + id).subscribe(response => {
       console.log(response);
       this.singleDetail = new MoviesItemDetailModel(response);
-      this.openDialog(this.singleDetail);
+
     });
   }
 
 
-  openDialog(detail: MoviesItemDetailModel): void {
 
-    const dialogRef = this.dialog.open(DetailModalComponent, {
-      width: '450px',
-      height: '300px',
-      data: { Price: detail.Price, Title: detail.Title, Year: detail.Year,
-              Rated: detail.Rated, Released: detail.Released, Runtime: detail.Runtime,
-              Genre: detail.Genre, Director: detail.Director, Writer: detail.Writer,
-              Actors: detail.Actors, Plot: detail.Plot, Language: detail.Language,
-              Country: detail.Country, Awards: detail.Awards, Poster: detail.Poster,
-              Metascore: detail.Metascore, Rating: detail.Rating, Votes: detail.Votes,
-              ID: detail.ID, Type: detail.Type},
-    });
-
-    dialogRef.afterClosed().subscribe(data => {
-      console.log('The dialog was closed' + data);
-    });
-  }
 
 }
